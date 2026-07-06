@@ -1,0 +1,41 @@
+{
+  "skill_name": "humanizer",
+  "testcases": [
+    {
+      "id": "TC1",
+      "name": "Standard dansk AI-tekst (business)",
+      "prompt": "Humanisér denne tekst:\n\n'Det er afgørende at bemærke, at digital transformation ikke blot handler om teknologi — det handler grundlæggende om mennesker. Denne banebrydende tilgang muliggør en holistisk forståelse af organisationens udfordringer, hvilket i sidste ende fører til bedre beslutningstagning og øget værdi for alle stakeholders.'",
+      "input_files": [],
+      "context": "Dansk professionel kontekst, business-tone forventet",
+      "difficulty": "standard",
+      "expected_tells": ["afgørende", "banebrydende", "holistisk", "i sidste ende", "em-dash", "stakeholders fluff"]
+    },
+    {
+      "id": "TC2",
+      "name": "Teknisk tekst med fagtermer der skal bevares",
+      "prompt": "Humanisér denne tekst:\n\n'Integrationen af CRM-data med marketing-dashboards repræsenterer en pivotal milepæl i vores datadrevne rejse. Ved at udnytte automatiserede datastrømme som bindeled, sikrer vi en sømløs dataflow der fundamentalt transformerer organisationens analytiske kapabiliteter, hvilket i bund og grund muliggør en mere informeret tilgang til kampagne-optimering.'",
+      "input_files": [],
+      "context": "Teknisk kontekst — CRM, dashboard og kampagne-termer skal bevares intakt",
+      "difficulty": "hard",
+      "expected_tells": ["pivotal", "rejse-metafor", "sømløs", "fundamentalt transformerer", "i bund og grund", "muliggør"]
+    },
+    {
+      "id": "TC3",
+      "name": "Edge case: allerede naturlig tekst",
+      "prompt": "Humanisér denne tekst:\n\n'Jeg sad i det møde og tænkte: det her gir ikke mening. Tallene peger den ene vej, men vi diskuterer noget helt andet. Så sagde jeg det højt. Det var akavet i 10 sekunder. Men bagefter kom folk hen og sagde tak.'",
+      "input_files": [],
+      "context": "Tekst der allerede er naturlig og personlig — minimal ændring forventet",
+      "difficulty": "edge",
+      "expected_tells": []
+    },
+    {
+      "id": "TC4",
+      "name": "Engelsksproget LinkedIn-stil tekst",
+      "prompt": "Humanisér denne tekst:\n\n'Excited to share that our team has embarked on a transformative journey, leveraging cutting-edge AI solutions to revolutionize customer engagement. This isn't just about technology — it's about empowering people. The interplay between human insight and machine intelligence is creating a tapestry of innovation that will shape the future of digital retail. Thrilled to be part of this exciting chapter!'",
+      "input_files": [],
+      "context": "Engelsk LinkedIn-kontekst, professionel men personlig tone",
+      "difficulty": "standard",
+      "expected_tells": ["Excited to share", "transformative journey", "cutting-edge", "revolutionize", "isn't just X it's Y", "interplay", "tapestry", "Thrilled", "exciting chapter"]
+    }
+  ]
+}

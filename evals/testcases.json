@@ -1,0 +1,25 @@
+{
+  "testcases": [
+    {
+      "id": "TC1",
+      "name": "Setup evalueringer for ny skill",
+      "difficulty": "standard",
+      "prompt": "Jeg skal evaluere en ny skill for LinkedIn prospecting. Hvad skulle jeg måle og hvordan?",
+      "context": "Skill-ejeren vil sikre konsistent kvalitet på nye skills"
+    },
+    {
+      "id": "TC2",
+      "name": "Automatisk testcase generation",
+      "difficulty": "hard",
+      "prompt": "Vi har løst et bug i en domæne-skill. Hvordan køres en fuldstændig re-evaluering med nye testcases for at sikre forbedringen?",
+      "context": "Kontinuerlig forbedring af eksisterende skills"
+    },
+    {
+      "id": "TC3",
+      "name": "Sammenligning af skill-versioner",
+      "difficulty": "edge",
+      "prompt": "Jeg skal sammenligne v1 og v2 af en tekst-transformations-skill baseret på 30+ testcases uden at gennemløbe hver manuelt. Hvad er approachen?",
+      "context": "Skallering af evaluering across mange skills"
+    }
+  ]
+}

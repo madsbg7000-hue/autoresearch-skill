@@ -1,0 +1,2 @@
+run_id	iteration	change_description	score	pct	decision	EF_score	AE_score	I_score	notes
+1	baseline	Initial state (v1.1.1)	4.333	86.7%	—	2.000	1.333	1.000	Svageste kategori: Automation & Execution (AE1 fail på TC2+TC3 — "llm_judge" literal string mangler)

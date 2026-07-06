@@ -1,0 +1,71 @@
+{
+  "skill_name": "autoresearch",
+  "context_profile": "evals/context_profile.json",
+  "version": "1.4.0",
+  "metric": "total_score",
+  "metric_direction": "higher_is_better",
+  "max_score": null,
+  "description": "Autonomt selvforbedringssystem til kontinuerlig skill-optimering",
+  "categories": [
+    {
+      "name": "Evaluation Framework",
+      "weight": 2.0,
+      "description": "Evne til at setup evalueringsmatricer",
+      "evals": [
+        {
+          "id": "EF1",
+          "question": "Kan systemet definere passende evalueringskategorier ud fra en skills formål?",
+          "type": "binary",
+          "grading": "llm_judge",
+          "grading_hint": "Check if proposed evals are relevant and comprehensive"
+        },
+        {
+          "id": "EF2",
+          "question": "Genererer systemet realistiske testcases på dansk?",
+          "type": "binary",
+          "grading": "llm_judge",
+          "grading_hint": "Check if testcases are contextual and realistic for the user's domain"
+        }
+      ]
+    },
+    {
+      "name": "Automation & Execution",
+      "weight": 2.0,
+      "description": "Kan systemet køre evalueringer automatisk",
+      "evals": [
+        {
+          "id": "AE1",
+          "question": "Understøttes både programmatisk og LLM-baseret grading?",
+          "type": "binary",
+          "grading": "programmatic",
+          "grading_hint": "Check for both 'programmatic' and 'llm_judge' grading types in evals"
+        },
+        {
+          "id": "AE2",
+          "question": "Kan systemet sammenligne før/efter resultater?",
+          "type": "binary",
+          "grading": "llm_judge",
+          "grading_hint": "Check if comparison logic is present"
+        }
+      ]
+    },
+    {
+      "name": "Integration",
+      "weight": 1.0,
+      "description": "Integration med skill-platforme",
+      "evals": [
+        {
+          "id": "I1",
+          "question": "Kan resultater eksporteres som skill-updates?",
+          "type": "binary",
+          "grading": "llm_judge",
+          "grading_hint": "Check for export/integration capabilities"
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "method": "weighted_sum",
+    "formula": "sum(category_weight * (passed_in_category / total_in_category))"
+  }
+}

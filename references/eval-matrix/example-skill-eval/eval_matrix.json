@@ -1,0 +1,96 @@
+{
+  "skill_name": "humanizer",
+  "version": "1.0",
+  "metric": "total_score",
+  "metric_direction": "higher_is_better",
+  "max_score": null,
+  "description": "Evaluerer om humanizer-skillen effektivt fjerner AI-mønstre uden at ødelægge indhold",
+  "categories": [
+    {
+      "name": "Detektion",
+      "weight": 2.0,
+      "description": "Finder skillen de AI-mønstre der faktisk er i teksten?",
+      "evals": [
+        {
+          "id": "D1",
+          "question": "Identificerer outputtet mindst 3 specifikke AI-tells fra top-10 listen?",
+          "type": "binary",
+          "grading": "programmatic",
+          "grading_hint": "Tjek om output nævner specifikke tell-kategorier: serves as, pivotal, -ing tails, tapestry, Additionally, rule of three, not just X, em dashes, fostering, generic closings"
+        },
+        {
+          "id": "D2",
+          "question": "Overser outputtet nul ægte AI-tells i inputteksten?",
+          "type": "binary",
+          "grading": "llm_judge",
+          "grading_hint": "Sammenlign input med output og identificér eventuelle AI-tells der ikke blev behandlet"
+        }
+      ]
+    },
+    {
+      "name": "Bevarelse",
+      "weight": 2.0,
+      "description": "Bevarer skillen kernebudskabet og fagtermer?",
+      "evals": [
+        {
+          "id": "B1",
+          "question": "Er kernebudskabet i inputteksten fuldt bevaret i outputtet?",
+          "type": "binary",
+          "grading": "llm_judge"
+        },
+        {
+          "id": "B2",
+          "question": "Er alle fagtermer og domæne-specifikke udtryk bevaret uændret?",
+          "type": "binary",
+          "grading": "llm_judge",
+          "grading_hint": "Fagtermer som CRM, dashboard, kampagne, datastrøm etc. skal være intakte"
+        }
+      ]
+    },
+    {
+      "name": "Naturlighed",
+      "weight": 1.5,
+      "description": "Lyder resultatet som en rigtig person skrev det?",
+      "evals": [
+        {
+          "id": "N1",
+          "question": "Er outputteksten fri for ALLE 10 AI-tells fra cheat-sheet?",
+          "type": "binary",
+          "grading": "programmatic",
+          "grading_hint": "Scan output for: serves as, stands as, pivotal, crucial, vital, showcasing, highlighting, underscoring, tapestry, landscape, testament, interplay, Additionally, Furthermore, fostering, enhancing, ensuring alignment, exciting times, bright future, banebrydende, spændende tider"
+        },
+        {
+          "id": "N2",
+          "question": "Matcher outputtonen den ønskede register (formel/casual/teknisk)?",
+          "type": "binary",
+          "grading": "llm_judge"
+        }
+      ]
+    },
+    {
+      "name": "Format",
+      "weight": 1.0,
+      "description": "Overholder outputtet det forventede format?",
+      "evals": [
+        {
+          "id": "F1",
+          "question": "Inkluderer outputtet en anti-AI audit sektion?",
+          "type": "binary",
+          "grading": "programmatic",
+          "grading_hint": "Tjek for tilstedeværelse af audit/gennemgang sektion der lister fundne tells"
+        },
+        {
+          "id": "F2",
+          "question": "Er outputtet struktureret som DRAFT → AUDIT → FINAL (for tekster over 50 ord)?",
+          "type": "binary",
+          "grading": "programmatic",
+          "grading_hint": "Scan for sektion-headers eller klart adskilt draft og final version"
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "method": "weighted_sum",
+    "formula": "sum(category_weight * (passed_in_category / total_in_category))"
+  }
+}

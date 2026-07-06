@@ -1,0 +1,46 @@
+{
+  "skill_name": "autoresearch",
+  "interrogation_date": "2026-06-18",
+  "domain": {
+    "industry": "Meta / skill-udvikling og prompt-optimering",
+    "company": "Personlig brug (skill-ejeren) + delbar til netværk",
+    "sector_specifics": "Selvforbedrende loops på alt med et målbart output: skills, prompts, rapporter, nyhedsbreve, copy",
+    "not_for": [
+      "produktionskode-optimering uden eval-suite",
+      "opgaver uden klar succesmetrik",
+      "engangstekster der ikke gentages"
+    ]
+  },
+  "audience": {
+    "primary_recipient": "Skill-ejeren (ikke-teknisk builder)",
+    "secondary_recipients": [
+      "LinkedIn-netværk der modtager skillen via CTA"
+    ],
+    "approval_authority": "Skill-ejeren selv — virker loopet efter intentionen og er det forståeligt for en ikke-tekniker?"
+  },
+  "must_know_terms": [
+    "KEEP",
+    "DISCARD",
+    "eval_matrix",
+    "testcases",
+    "baseline",
+    "Challenger",
+    "separation of concerns",
+    "Karpathy autoresearch",
+    "context_profile"
+  ],
+  "must_know_rules": [
+    "Eval-funktion, testdata og context_profile låses fast under et loop",
+    "Generatoren scorer aldrig sit eget output",
+    "Kun ét artefakt ændres ad gangen",
+    "VERIFIKATIONSPAS køres før enhver KEEP"
+  ],
+  "existing_context_sources": [
+    "references/use-cases.md",
+    "references/eval-matrix/EVAL-MATRIX.md"
+  ],
+  "optimization_scope": "broad",
+  "scope_detail": "Hele skillen skal fungere både for ikke-tekniske og tekniske brugere, på tværs af use cases",
+  "gold_standard": null,
+  "success_criteria": "En ikke-teknisk bruger kan starte et selvforbedrende loop på eget output og forstå hvorfor KEEP/DISCARD-beslutningen er troværdig"
+}
